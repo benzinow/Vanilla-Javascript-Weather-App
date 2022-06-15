@@ -1,5 +1,7 @@
 let apiKey = "7b7e5e8848a93cc4470c8304aa9f56a5";
 let tempUnit = "metric";
+let currentLatitude = null;
+let currentLongitude = null;
 //let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${tempUnit}&appid=${apiKey}`;
 
 let citySearch = document.querySelector("#cityForm");
@@ -140,8 +142,3 @@ function flipTempScale() {
     tempNumber.innerHTML = "100&deg;";
   }
 }
-
-//extra
-//city prediction, as typing??
-//api pull update weather description/icon?
-//api pull update sunset/sunrise time?
