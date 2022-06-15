@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<link rel="stylesheet" href="src/styles.css" />
+		<link
+			rel="stylesheet"
+			href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+			integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+			crossorigin="anonymous"
+		/>
+	</head>
+	<body class="background">
+		<div class="container">
+			<form id="cityForm" class="city-form">
+				<input
+					class="search-input"
+					type="text"
+					placeholder="Enter a City"
+					id="cityInput"
+				/>
+				<button type="submit" class="search-button" id="citySearchn">
+					<img
+						class="search-icon"
+						src="images/svg/022-magnifying-glass.svg"
+						alt="search icon"
+					/>
+				</button>
+			</form>
+		</div>
+		<div class="content-box">
+			<div class="container">
+				<div class="row">
+					<div class="col today">
+						<h1>Tucson, Arizona</h1>
+						<p class="current-time" id="currentTime">now now now</p>
+						<div class="row">
+							<div class="col">
+								<img
+									src="images/svg/019-sun.svg"
+									class="rounded mx-auto d-block current-weather-icon"
+									alt="Sun Icon"
+								/>
+							</div>
+							<div class="col big-temp" id="tempToday">100&deg;</div>
+						</div>
+						<div class="row today-info">
+							<div class="col">Sunny</div>
+							<div class="col">64°/102°</div>
+						</div>
+						<div class="chart">
+							<img
+								src="images/sunriseline.png"
+								alt="Sunrise chart"
+								class="sunrise"
+							/>
+							<img
+								src="images/svg/015-waxing-moon-2.svg"
+								alt="sunrise and sunset icon"
+								class="moon-phase"
+							/>
+						</div>
+						<div class="row">
+							<div class="col sunrise-time">Sunrise 5:43am</div>
+							<div class="col sunset-time">Sunset 9:32pm</div>
+						</div>
+					</div>
+
+					<div class="col hourly">
+						<h2>12 hour forcast</h2>
+						<div class="row">
+							<div class="col">10am</div>
+							<div class="col-">⛅</div>
+							<div class="col">70°/74°</div>
+						</div>
+						<div class="row">
+							<div class="col">11am</div>
+							<div class="col-">⛅</div>
+							<div class="col">70°/74°</div>
+						</div>
+						<div class="row">
+							<div class="col">12pm</div>
+							<div class="col-">⛅</div>
+							<div class="col">70°/74°</div>
+						</div>
+						<div class="row">
+							<div class="col">1pm</div>
+							<div class="col-">⛅</div>
+							<div class="col">70°/74°</div>
+						</div>
+						<div class="row">
+							<div class="col">2m</div>
+							<div class="col-">⛅</div>
+							<div class="col">70°/74°</div>
+						</div>
+						<div class="row">
+							<div class="col">3pm</div>
+							<div class="col-">⛅</div>
+							<div class="col">70°/74°</div>
+						</div>
+						<div class="row">
+							<div class="col">4pm</div>
+							<div class="col-">⛅</div>
+							<div class="col">70°/74°</div>
+						</div>
+						<div class="row">
+							<div class="col">5pm</div>
+							<div class="col-">⛅</div>
+							<div class="col">70°/74°</div>
+						</div>
+						<div class="row">
+							<div class="col">6pm</div>
+							<div class="col-">⛅</div>
+							<div class="col">70°/74°</div>
+						</div>
+						<div class="row">
+							<div class="col">7pm</div>
+							<div class="col-">⛅</div>
+							<div class="col">70°/74°</div>
+						</div>
+						<div class="row">
+							<div class="col">8pm</div>
+							<div class="col-">⛅</div>
+							<div class="col">70°/74°</div>
+						</div>
+						<div class="row">
+							<div class="col">9pm</div>
+							<div class="col-">⛅</div>
+							<div class="col">70°/74°</div>
+						</div>
+						<div class="row">
+							<div class="col">10pm</div>
+							<div class="col-">⛅</div>
+							<div class="col">70°/74°</div>
+						</div>
+					</div>
+					<div class="col this-week">
+						<h2>This week</h2>
+						<div class="row">
+							<div class="col">Monday</div>
+							<div class="col-">⛅</div>
+							<div class="col">70°/74°</div>
+							<p>Additional info bleepy bloop</p>
+						</div>
+						<div class="row">
+							<div class="col">Tuesday</div>
+							<div class="col-">⛅</div>
+							<div class="col">70°/74°</div>
+							<p>Additional info bleepy bloop</p>
+						</div>
+						<div class="row">
+							<div class="col">Wednesday</div>
+							<div class="col-">⛅</div>
+							<div class="col">70°/74°</div>
+							<p>Additional info bleepy bloop</p>
+						</div>
+						<div class="row">
+							<div class="col">Thursday</div>
+							<div class="col-">⛅</div>
+							<div class="col">70°/74°</div>
+							<p>Additional info bleepy bloop</p>
+						</div>
+						<div class="row">
+							<div class="col">Friday</div>
+							<div class="col-">⛅</div>
+							<div class="col">70°/74°</div>
+							<p>Additional info bleepy bloop</p>
+						</div>
+						<div class="row">
+							<div class="col">Saturday</div>
+							<div class="col-">⛅</div>
+							<div class="col">70°/74°</div>
+							<p>Additional info bleepy bloop</p>
+						</div>
+						<div class="row">
+							<div class="col">Sunday</div>
+							<div class="col-">⛅</div>
+							<div class="col">70°/74°</div>
+							<p>Additional info bleepy bloop</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div>
+				<img
+					src="images/svg/004-farenheit.svg"
+					alt="farenheight icon"
+					class="temp-scale"
+					id="tempScale"
+					onclick="flipTempScale()"
+				/>
+			</div>
+		</div>
+
+		<script type="text/javascript" src="src/script.js"></script>
+	</body>
+</html>
