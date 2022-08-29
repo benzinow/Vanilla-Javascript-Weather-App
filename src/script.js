@@ -6,11 +6,6 @@ let currentLongitude = null;
 let citySearch = document.querySelector("#cityForm"); //refrencing the search bar from HTML
 citySearch.addEventListener("submit", cityDisplay); //waiting for someone to click the search button
 
-let imperialButton = document.querySelector("#imperialButton"); //calling the faraheight button on page
-imperialButton.addEventListener("click", showImperial); // run function to switch temparatures to farenheight
-let metricButton = document.querySelector("#metricButton"); //calling the celcius button on page
-metricButton.addEventListener("click", showMetric); // run function to switch temparatures to celcius
-
 function currentPosition(position) {
   //function to find someones current location and set that as the default
   currentLatitude = position.coords.latitude; //pulls users current position
