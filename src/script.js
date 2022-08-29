@@ -2,9 +2,6 @@ let apiKey = "7b7e5e8848a93cc4470c8304aa9f56a5"; //sets API key
 let tempUnit = "imperial"; //default faranheight but want to use local memory to remember users prefrence
 let currentLatitude = null; //blank because it will be filled in by currentposion function
 let currentLongitude = null;
-let imperialTemp = null;
-let imperialLow = null;
-let imperialHigh = null;
 
 let citySearch = document.querySelector("#cityForm"); //refrencing the search bar from HTML
 citySearch.addEventListener("submit", cityDisplay); //waiting for someone to click the search button
@@ -41,11 +38,6 @@ function showTemperature(response) {
   let weatherDescription = document.querySelector("#weatherDescription"); //refrences the HTML where the weather description is displayed
   let description = response.data.weather[0].main; //reads the response for the weather description
   weatherDescription.innerHTML = `${description}`; //replaces the HTML with pulled weather description
-  imperialTemp = response.data.main.temp;
-  imperialLow = low;
-  imperialHigh = high;
-  document.getElementById("imperialIcon").classList.add("active-unit");
-  document.getElementById("metricIcon").classList.remove("active-unit");
 }
 
 function cityDisplay(event) {
@@ -139,27 +131,3 @@ function formatDate() {
   currentTime.innerHTML = `${day}, ${month} ${now.getDate()} ${now.getHours()}:${minute}`; //Changes displayed time using collected data
 }
 formatDate(); //pulls and displays current time and date
-
-function showMetric(event) {
-  event.preventDefault();
-  let metricTemp = (imperialTemp - 32) * (5 / 9);
-  let temperatureElement = document.querySelector("#tempToday");
-  temperatureElement.innerHTML = Math.round(metricTemp);
-  let metricLow = Math.round((imperialLow - 32) * (5 / 9));
-  let metricHigh = Math.round((imperialHigh - 32) * (5 / 9));
-
-  let temperatureElementLowHigh = document.querySelector("#lowHi");
-  temperatureElementLowHigh.innerHTML = `${metricLow}°/${metricHigh}°`;
-  document.getElementById("metricIcon").classList.add("active-unit");
-  document.getElementById("imperialIcon").classList.remove("active-unit");
-}
-
-function showImperial(event) {
-  event.preventDefault();
-  let temperatureElement = document.querySelector("#tempToday");
-  temperatureElement.innerHTML = Math.round(imperialTemp);
-  let temperatureElementLowHigh = document.querySelector("#lowHi");
-  temperatureElementLowHigh.innerHTML = `${imperialLow}°/${imperialHigh}°`;
-  document.getElementById("imperialIcon").classList.add("active-unit");
-  document.getElementById("metricIcon").classList.remove("active-unit");
-}
