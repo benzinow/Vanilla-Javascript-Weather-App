@@ -28,46 +28,70 @@
             class="search-icon"
             src="images/svg/022-magnifying-glass.svg"
             alt="search icon"
+   
           />
         </button>
       </form>
     </div>
     <div class="content-box">
       <div class="container">
-        <div class="row">
-          <div class="col today">
-            <h1>Tucson, Arizona</h1>
-            <p class="current-time" id="currentTime">now now now</p>
-            <div class="row">
-              <div class="col">
+          <div class="row">
+            <div class="col-6">
+              
+                <h1 class="row">Tucson, Arizona</h1>
+            
+              
+                <div class="text row" id="currentTime">now now now</div>
+                <div class="text row" id="currentHumidity">Humidity: 0%</div> <div class="text row" id="currentWind">Wind: 2mph</div>
+            
+            </div>
+            <div class="col-3">
+              <div class="row">
                 <img
                   src="images/svg/019-sun.svg"
-                  class="current-weather-icon"
+                 class="weather-icon"
                   alt="Sun Icon"
+                  id="icon"
                 />
               </div>
-              <div class="col big-temp" id="tempToday">100</div>
-          
-              <div id="fara-button">
-                <a href="#" id="imperialButton"><img class=" unit-icon active-unit" src="images/svg/004-farenheit.svg" id="imperialIcon"
-              alt="farenheit icon"></a>
+              <div class="row">
+                <div class="text weather-decription" id="weatherDescription">Sunny</div>
               </div>
-
             </div>
-            <div class="row today-info">
-              <div class="col weather-type" id="weatherDescription">Sunny</div>
-              <div class="col weather-type" id="lowHi">64°/102°</div>
-            </div>
+            <div class="col-3">
+              <div class="row">
+                <div class="text main-temp"  id="tempToday">100</div>
 
+              
+                <a href="#"  id="imperialButton"
+                  ><img
+                  class="fara-button"
+                    src="images/svg/004-farenheit.svg"
+                    id="imperialIcon"
+                    alt="farenheit icon"
+                /></a>
             
+            </div>
+              
+              <div class="row">
+                <div class="text" id="lowHi">64°/102°</div>
+              </div>
+            </div>
           </div>
-
-
-      
+          <div class="row" id="forecast">
+            <div class="col" >
+              <div class="row text">day</div>
+              <div class="row">icon</div>
+              <div class="row text">low/high</div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <p>
-      <a href="https://github.com/benzinow/weatherapp">Open source code by Benzi Holler</a
-        >
+      <a href="https://github.com/benzinow/weatherapp"
+        >Open source code by Benzi Holler</a
+      >
     </p>
 
     <script type="text/javascript" src="src/script.js"></script>

@@ -1,4 +1,4 @@
-let apiKey = "7b7e5e8848a93cc4470c8304aa9f56a5"; //sets API key
+let apiKey = "b40b135798f82a05aed08769f9275f50"; //sets API key
 let tempUnit = "imperial"; //default faranheight but want to use local memory to remember users prefrence
 let currentLatitude = null; //blank because it will be filled in by currentposion function
 let currentLongitude = null;
@@ -21,6 +21,7 @@ navigator.geolocation.getCurrentPosition(currentPosition); //calls the funtion t
 
 function showTemperature(response) {
   //function to display weather data pulls from API
+  console.log(response.data);
   let temperature = Math.round(response.data.main.temp); //reads the response, finds the current temp, rounds the number
   let temperatureDisplay = document.querySelector("#tempToday"); // refrences the HTML for where the main temperature is displayed
   temperatureDisplay.innerHTML = `${temperature}`; //changes the HTML to display the pulled temperature
@@ -33,6 +34,15 @@ function showTemperature(response) {
   let weatherDescription = document.querySelector("#weatherDescription"); //refrences the HTML where the weather description is displayed
   let description = response.data.weather[0].main; //reads the response for the weather description
   weatherDescription.innerHTML = `${description}`; //replaces the HTML with pulled weather description
+  let iconElement = document.querySelector("#icon");
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  let humidity = document.querySelector("#currentHumidity");
+  humidity.innerHTML = `Humidity: ${response.data.main.humidity}%`;
+  let windSpeed = document.querySelector("#currentWind");
+  windSpeed.innerHTML = `Wind: ${Math.round(response.data.wind.speed)}mph`;
 }
 
 function cityDisplay(event) {
@@ -126,3 +136,23 @@ function formatDate() {
   currentTime.innerHTML = `${day}, ${month} ${now.getDate()} ${now.getHours()}:${minute}`; //Changes displayed time using collected data
 }
 formatDate(); //pulls and displays current time and date
+
+//function displayForecast() {
+//let forecastElement = document.querySelector("#forecast");
+
+//let forecastHTML = ` <div class="col" >
+
+//<div class="row text">changed?</div>
+//<div class="row">icon</div>
+//<div class="row text">low/high</div>
+//</div>`;
+
+//let days = []
+//days.forEach(function(day)){
+
+//};
+
+//forecastElement.innerHTML = forecastHTML;
+//}
+
+//displayForecast();
