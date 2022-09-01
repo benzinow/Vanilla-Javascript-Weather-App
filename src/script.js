@@ -34,17 +34,17 @@ function showTemperature(response) {
   let weatherDescription = document.querySelector("#weatherDescription"); //refrences the HTML where the weather description is displayed
   let description = response.data.weather[0].main; //reads the response for the weather description
   weatherDescription.innerHTML = `${description}`; //replaces the HTML with pulled weather description
-  let iconElement = document.querySelector("#icon");
+  let iconElement = document.querySelector("#icon"); //refrences the HTML where the big weather icon will be displayed
   iconElement.setAttribute(
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
-  );
-  let humidity = document.querySelector("#currentHumidity");
-  humidity.innerHTML = `Humidity: ${response.data.main.humidity}%`;
-  let windSpeed = document.querySelector("#currentWind");
-  windSpeed.innerHTML = `Wind: ${Math.round(response.data.wind.speed)}mph`;
+  ); //changes the source of the icon to a dynamic one from the API
+  let humidity = document.querySelector("#currentHumidity"); //refrences where humidity islisted in HTML
+  humidity.innerHTML = `Humidity: ${response.data.main.humidity}%`; //changes to humidity info from the API
+  let windSpeed = document.querySelector("#currentWind"); //refrences HTML spot for wind Speed
+  windSpeed.innerHTML = `Wind: ${Math.round(response.data.wind.speed)}mph`; //Changes wind speed info from the API
 
-  getForecast(response.data.coord);
+  getForecast(response.data.coord); //runs get forecast function
 }
 
 function cityDisplay(event) {
@@ -140,22 +140,24 @@ function formatDate() {
 formatDate(); //pulls and displays current time and date
 
 function formatDay(timestamp) {
-  let date = new Date(timestamp * 1000);
+  let date = new Date(timestamp * 1000); //refrences time stamps from the API
   let day = date.getDay();
-  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-  return days[day];
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]; //names they days in the array
+  return days[day]; //gives day info for display
 }
 
 function displayForecast(response) {
-  let forecast = response.data.daily;
+  let forecast = response.data.daily; //calls api for info
 
-  let forecastElement = document.querySelector("#forecast");
+  let forecastElement = document.querySelector("#forecast"); //refrences HTML block for the forcast section
 
-  let forecastHTML = `<div class="row">`;
+  let forecastHTML = `<div class="row">`; //surrounding HTML
 
   forecast.forEach(function (forecastDay, index) {
+    //starts a loop that refences days from API
     if (index < 6) {
-      forecastHTML =
+      //stops loop at 5 so only 6 days come up in the que
+      forecastHTML = //defines what HTML we want inserted into the page
         forecastHTML +
         `<div class="col-2" >
               <div class="row text">${formatDay(forecastDay.dt)}</div>
@@ -174,11 +176,11 @@ function displayForecast(response) {
     }
   });
 
-  forecastHTML = forecastHTML + `</div>`;
-  forecastElement.innerHTML = forecastHTML;
+  forecastHTML = forecastHTML + `</div>`; //adds closing div
+  forecastElement.innerHTML = forecastHTML; //replaces current HTML with this information
 }
 
 function getForecast(coordinates) {
-  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=${tempUnit}`;
-  axios.get(apiUrl).then(displayForecast);
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=${tempUnit}`; //calls the more in depth api info
+  axios.get(apiUrl).then(displayForecast); //gets info and runs display forcast
 }

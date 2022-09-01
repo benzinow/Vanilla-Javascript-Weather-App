@@ -92,3 +92,8 @@ h1 {
   text-align: center;
   margin: 30px;
 }
+
+.credit {
+  color: darkorange;
+  font-size: 8px;
+}
