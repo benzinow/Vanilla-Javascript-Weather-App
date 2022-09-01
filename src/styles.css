@@ -87,3 +87,8 @@ h1 {
 .city-form {
   margin: 20px;
 }
+
+.forecast-group {
+  text-align: center;
+  margin: 30px;
+}

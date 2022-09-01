@@ -21,7 +21,7 @@ navigator.geolocation.getCurrentPosition(currentPosition); //calls the funtion t
 
 function showTemperature(response) {
   //function to display weather data pulls from API
-  console.log(response.data);
+
   let temperature = Math.round(response.data.main.temp); //reads the response, finds the current temp, rounds the number
   let temperatureDisplay = document.querySelector("#tempToday"); // refrences the HTML for where the main temperature is displayed
   temperatureDisplay.innerHTML = `${temperature}`; //changes the HTML to display the pulled temperature
@@ -43,6 +43,8 @@ function showTemperature(response) {
   humidity.innerHTML = `Humidity: ${response.data.main.humidity}%`;
   let windSpeed = document.querySelector("#currentWind");
   windSpeed.innerHTML = `Wind: ${Math.round(response.data.wind.speed)}mph`;
+
+  getForecast(response.data.coord);
 }
 
 function cityDisplay(event) {
@@ -137,22 +139,46 @@ function formatDate() {
 }
 formatDate(); //pulls and displays current time and date
 
-//function displayForecast() {
-//let forecastElement = document.querySelector("#forecast");
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  return days[day];
+}
 
-//let forecastHTML = ` <div class="col" >
+function displayForecast(response) {
+  let forecast = response.data.daily;
 
-//<div class="row text">changed?</div>
-//<div class="row">icon</div>
-//<div class="row text">low/high</div>
-//</div>`;
+  let forecastElement = document.querySelector("#forecast");
 
-//let days = []
-//days.forEach(function(day)){
+  let forecastHTML = `<div class="row">`;
 
-//};
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `<div class="col-2" >
+              <div class="row text">${formatDay(forecastDay.dt)}</div>
+              <div class="row"><img
+              class=""
+                src="http://openweathermap.org/img/wn/${
+                  forecastDay.weather[0].icon
+                }@2x.png"
+                width="50px"
+            /></div>
+              <div class="row text">${Math.round(
+                forecastDay.temp.max
+              )}°/${Math.round(forecastDay.temp.min)}°</div>
+            </div>
+  `;
+    }
+  });
 
-//forecastElement.innerHTML = forecastHTML;
-//}
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
 
-//displayForecast();
+function getForecast(coordinates) {
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=${tempUnit}`;
+  axios.get(apiUrl).then(displayForecast);
+}
